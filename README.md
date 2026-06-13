@@ -45,13 +45,13 @@ Abrir `http://localhost:5151/swagger`.
 ## Ejecutar pruebas
 
 ```powershell
-dotnet test .\ApiPrueba\ApiPrueba.slnx
+dotnet test .\ApiPrueba.slnx
 ```
 
 Para generar cobertura:
 
 ```powershell
-dotnet test .\ApiPrueba\ApiPrueba.slnx --collect:"XPlat Code Coverage"
+dotnet test .\ApiPrueba.slnx --collect:"XPlat Code Coverage
 ```
 
 ## Ejecutar con Docker
