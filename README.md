@@ -97,3 +97,8 @@ Los valores de enum se envían como texto en inglés: `Critical`, `Urgent`,
 - [Diagrama de secuencia](docs/DIAGRAMA_SECUENCIA.md)
 - [Informe de uso de IA](docs/INFORME_IA.md)
 - Colección de ejemplos: `ApiPrueba/ApiPrueba/ApiPrueba.http`
+
+## Link a RENDER
+
+https://apiprueba-muza.onrender.com
+
