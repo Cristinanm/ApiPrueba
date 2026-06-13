@@ -1,23 +1,18 @@
-FROM mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-ltsc2022 AS base
-WORKDIR /app
-EXPOSE 5151
-
-ENV ASPNETCORE_URLS=http://+:5151
-
-FROM mcr.microsoft.com/dotnet/sdk:9.0-nanoserver-ltsc2022 AS build
-ARG configuration=Release
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
+
 COPY ["ApiPrueba/ApiPrueba/ApiPrueba.csproj", "ApiPrueba/ApiPrueba/"]
-RUN dotnet restore "ApiPrueba\ApiPrueba\ApiPrueba.csproj"
+RUN dotnet restore "ApiPrueba/ApiPrueba/ApiPrueba.csproj"
+
 COPY . .
 WORKDIR "/src/ApiPrueba/ApiPrueba"
-RUN dotnet build "ApiPrueba.csproj" -c $configuration -o /app/build
+RUN dotnet publish "ApiPrueba.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
-FROM build AS publish
-ARG configuration=Release
-RUN dotnet publish "ApiPrueba.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+
+COPY --from=build /app/publish .
+
+ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT}
+
 ENTRYPOINT ["dotnet", "ApiPrueba.dll"]
