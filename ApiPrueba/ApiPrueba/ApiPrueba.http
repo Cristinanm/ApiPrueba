@@ -1,6 +1,28 @@
-@ApiPrueba_HostAddress = http://localhost:5151
+@host = http://localhost:5151
 
-GET {{ApiPrueba_HostAddress}}/weatherforecast/
-Accept: application/json
+### Estado de la API
+GET {{host}}/
 
-###
+### Obtener sitios (copiar un id para crear el incidente)
+GET {{host}}/api/sites
+
+### Obtener técnicos
+GET {{host}}/api/technicians
+
+### Crear incidente
+POST {{host}}/api/incidents
+Content-Type: application/json
+
+{
+  "title": "Corte de fibra principal",
+  "description": "Sin conectividad en el enlace troncal del sitio.",
+  "siteId": "REEMPLAZAR_CON_ID_DE_SITIO",
+  "requiredSpecialty": "FiberOptic",
+  "severity": "Critical"
+}
+
+### Listar incidentes
+GET {{host}}/api/incidents
+
+### Reporte general
+GET {{host}}/api/reports/summary

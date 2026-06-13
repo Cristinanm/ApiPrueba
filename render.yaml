@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: netguard-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /
+    autoDeploy: true
