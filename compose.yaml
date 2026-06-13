@@ -1,0 +1,10 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+services:
+  apiprueba:
+    image: apiprueba
+    build:
+      context: .
+      dockerfile: ApiPrueba/ApiPrueba/Dockerfile
+    ports:
+      - 5151:5151
