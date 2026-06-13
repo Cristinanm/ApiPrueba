@@ -64,7 +64,7 @@ La API queda disponible en `http://localhost:5151/swagger`.
 
 ## Despliegue en Render
 
-1. Subir el repositorio a GitHub con el nombre `0907-23-13067_ANALISIS2026FINAL`.
+1. Subir el repositorio a GitHub con el nombre `ApiPrueba`.
 2. Entrar a Render y seleccionar **New > Blueprint**.
 3. Conectar el repositorio.
 4. Render detectará `render.yaml` y construirá el `Dockerfile`.
